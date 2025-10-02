@@ -4,18 +4,28 @@ import cors from "cors"
 import 'dotenv/config'
 import path from "path"
 import { fileURLToPath } from "url"
+
 const app=express();
 app.use(cors());
 app.use(express.json());
+
 const  __filename=fileURLToPath(import.meta.url);
 const  __dirname=path.dirname(__filename);
+
 app.use(express.static(path.join(__dirname,"..","public")));
 
 
 async function server(){
 try{
- await mongoose.connect("mongodb+srv://prvn:zoro12@cluster0.jzmc2ut.mongodb.net");
- console.log("mongodb connected");
+ await mongoose.connect("process.env.MONOGODB_URI");
+  console.log("mongodb connected");
+
+}catch(error){
+  console.error("MONGODB connection failed ");
+}
+}
+server();
+
 const  todoSchema=new mongoose.Schema({
      done:{
           type:Boolean,
@@ -25,11 +35,7 @@ const  todoSchema=new mongoose.Schema({
 
   const Todo=mongoose.model("Todo",todoSchema);
 
-}catch(error){
-  console.error("MONGODB connection failed ");
-}
-}
-server();
+
 app.get("/",(req,res)=>{
  res.sendFile(path.join(__dirname,"..","public",
 "index.html"));

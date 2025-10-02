@@ -1,7 +1,8 @@
 const API_URL = "http://localhost:8000/api";
 const input=document.getElementById('input');
 const taskList=document.getElementById('tasklist');
-const btn=document.getElementById('btn');
+const btn=document.getElementById('add');
+
 async function getData(){
 try{
   const res= await fetch(`${API_URL},/getdata`);
@@ -17,7 +18,7 @@ catch(error){
 
 async function addData(text){
 try{
-  const res= await fetch(`${API_URL},/adddat`,{
+  const res= await fetch(`${API_URL},/adddata`,{
    method:'POST',
    headers:{
    'Content-Type':'application/json';
@@ -34,14 +35,27 @@ catch(error){
 }
 }
 
+async function delData(id){
+ try{
+ const res=await fetch(`${API_URL},/deldata/${id}`,{
+ method:'DELETE';
+});
 
+ if(!res.ok)throw new Error("error couldn't delete todo");
+return true;
+}
+ catch(error){
+  console.log("ERROR WHILE DELETING TODO");
+}
+}
+}
 
 function addToUi(todo) {
    if(input.value===""){
      alert(`you must write a task to add`);
    }else{
    let li=document.createElement("li");
-   li.innerHTML=input.value.trim();
+   li.innerHTML=todo;
    let cross=document.createElement("span");
     cross.innerHTML="×";
      li.appendChild(cross);
@@ -50,18 +64,24 @@ function addToUi(todo) {
   input.value="";
 }
 
+function removeFromUi(li){
+  if(li){
+  li.remove();
+}
+}
 
   taskList.addEventListener("click",(e)=>{
   if(e.target.tagName==="LI"){
     e.target.classList.toggle("checked");
   }else if(e.target.tagName==="SPAN"){
-    deltodo(e.id,li);
+    deltodo(e.id);
+    removeFromUi(e);
   }
 
   });
-  
+
   btn.addEventListener("click",()=>{
    const newTodo=addData(input.value.trim());
-  addToUi(newTodo);
-input.value="";
+   addToUi(newTodo.text);
+   input.value="";
 });
