@@ -17,17 +17,22 @@ app.use(express.static(path.join(__dirname,"..","public")));
 
 async function server(){
 try{
- await mongoose.connect("process.env.MONOGODB_URI");
-  console.log("mongodb connected");
+ await mongoose.connect(process.env.MONGODB_URI);
+   console.log("mongodb connected");
 
 }catch(error){
   console.error("MONGODB connection failed ");
 }
+
 }
 server();
 
 const  todoSchema=new mongoose.Schema({
-     done:{
+    text:{
+       type:String,
+       required:true
+},
+    done:{
           type:Boolean,
           default:false
           }
