@@ -17,11 +17,15 @@ app.use(express.static(path.join(__dirname,"..","public")));
 
 async function server(){
 try{
+   console.log("connecting to db...");
  await mongoose.connect(process.env.MONGODB_URI);
    console.log("mongodb connected");
-
+  app.listen(process.env.PORT,(req,res)=>{
+   console.log(`backend server started at http://localhost:${process.env.PORT}`);
+});
 }catch(error){
-  console.error("MONGODB connection failed ");
+  console.error("MONGODB connection failed,error message: ",error.message);
+  console.error(error);
 }
 
 }
@@ -58,7 +62,5 @@ app.delete("/api/deldata/:id",async (req,res)=>{
  await Todo.findByIdAndDelete(req.params.id);
      res.json({message:"deleted"});
 });
-app.listen(process.env.PORT,(req,res)=>{
-   console.log(`backend server started at http://localhost:${process.env.PORT}`);
-});
+
 
