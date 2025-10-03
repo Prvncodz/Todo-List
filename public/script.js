@@ -5,7 +5,7 @@ const btn=document.getElementById('add');
 
 async function getData(){
 try{
-  const res= await fetch(`${API_URL}/getdata`);
+  const res= await fetch(`${API_URL},/getdata`);
   const todos= await res.json();
   taskList.innerHTML="";
   todos.forEach(todo=>addToUi(todo));
@@ -13,6 +13,7 @@ try{
 catch(error){
  console.error("ERROR :",error);
 }
+
 }
 
 
@@ -22,8 +23,8 @@ try{
    method:'POST',
    headers:{
    'Content-Type':'application/json'
-}
-   body:JSON.stringify({text:text,done:false}
+},
+   body:JSON.stringify({text:text,done:false})
 
 });
 if(!res.ok) throw new Error("error couldnt add todo");
@@ -48,7 +49,7 @@ return true;
   console.log("ERROR WHILE DELETING TODO");
 }
 }
-}
+
 
 function addToUi(todo) {
    let li=document.createElement("li");
@@ -73,7 +74,7 @@ function removeFromUi(li){
   }else if(e.target.tagName==="SPAN"){
    const li=e.target.parentElement;
    const id=li.dataset.id;
-    deltodo(id);
+    delData(id);
     removeFromUi(li);
   }
 
@@ -87,4 +88,4 @@ if(input.value.trim()==""){
    addToUi(newTodo);
    input.value="";
 });
-getdata();
+getData();
