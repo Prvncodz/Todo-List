@@ -1,9 +1,8 @@
 # To-Do List
 
-![To-Do List Screenshot](/image
-/Screenshot_2025-10-03-18-18-38-050_com.heytap.browser.jpg)
+![App Screenshot](image/Screenshot_2025-10-03-18-18-38-050_com.heytap.browser.jpg)
 
-A simple and responsive To-Do List web app built using **HTML**, **CSS**, and **JavaScript**.  
+A simple and responsive To-Do List web app built using **frontend** and **backend**.  
 This project was developed and tested directly on a mobile device, so appearance and interactions are optimized for phones.
 
 ## Features
@@ -25,13 +24,12 @@ This project was developed and tested directly on a mobile device, so appearance
 3. **Delete a Task:**  
    Press the delete button next to any task to remove it.
 
-## File Structure
-To-Do List/ ├── images/ │ └── Screenshot_2025-07-07-07-23-58-821_com.replit.app.jpg ├── index.html ├── style.css ├── script.js └── README.md
+
 
 ## Notes
 
 - The UI and interactions are designed for mobile users, so layouts may differ on desktop devices.
-- This mini project helped me learn and practice web development concepts on my phone.
+- This mini project helped me learn and practice frontend and backend connection and api routes.
 
 ## License
 
