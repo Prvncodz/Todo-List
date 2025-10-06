@@ -1,6 +1,7 @@
 # To-Do List
 
-![To-Do List Screenshot](images/Screenshot_2025-07-07-07-23-58-821_com.replit.app.jpg)
+![To-Do List Screenshot](/image
+/Screenshot_2025-10-03-18-18-38-050_com.heytap.browser.jpg)
 
 A simple and responsive To-Do List web app built using **HTML**, **CSS**, and **JavaScript**.  
 This project was developed and tested directly on a mobile device, so appearance and interactions are optimized for phones.
