@@ -1,6 +1,6 @@
 # To-Do List
 
-![App Screenshot](image/Screenshot_2025-10-03-18-18-38-050_com.heytap.browser.jpg)
+![App Screenshot](image/IMG_20251117_203423.jpg)
 
 A simple and responsive To-Do List web app built using **frontend** and **backend**.  
 This project was developed and tested directly on a mobile device, so appearance and interactions are optimized for phones.
